@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<title>jQuery.tabWizard Example</title>
+		<link href="../jQuery.tabWizard.css" rel="Stylesheet" type="text/css" />
+		<script src="jquery-1.7.2.min.js" type="text/javascript"></script>
+		<script src="jquery.history.js" type="text/javascript"></script>
+		<script src="../jQuery.tabWizard.js" type="text/javascript"></script>
+		<style type="text/css">
+			.displayDiv
+			{
+				width: 500px;
+				padding: 25px;
+				border-left: solid 1px #000;
+				border-right: solid 1px #000;
+				border-bottom: solid 1px #000;
+				border-radius: 0 0 15px 15px;
+				display: none;
+				text-align: center;
+				font-size: 50px;
+				margin: auto;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function()
+			{
+				$.history.init(function(hash)
+				{
+					if(hash == "")
+					{
+						$('#test').tabWizard(
+							{
+								tabs:
+								[
+									{ text: 'Settings', hash: 'Settings' },
+									{ text: 'Groups', hash: 'Groups' },
+									{ text: 'Products', hash: 'Products' },
+									{ text: 'Make Assignments', hash: 'MakeAssignments' },
+									{ text: 'Review Assignments', hash: 'ReviewAssignments' },
+									{ text: 'Status', hash: 'Status' },
+									{ text: 'Commitments', hash: 'Commitments' }
+								]
+							}
+						).tabWizard('setSelected', 'Settings');
+						$('#SettingsContainer').slideDown();
+					}
+					else
+					{
+						$('#test').tabWizard('setSelected', hash); 
+						$('.displayDiv:visible').slideUp('fast', function()
+						{
+							$('#' + hash + 'Container').slideDown('fast');
+						});
+					}
+				},
+				{ unescape: ",/" });
+			});
+		</script>
+	</head>
+	<body>
+		<div style="text-align: center;">
+			<div id="test">
+			</div>
+		</div>
+		<div class="displayDiv" id="SettingsContainer">
+			Settings
+		</div>
+		<div class="displayDiv" id="GroupsContainer">
+			Groups
+		</div>
+		<div class="displayDiv" id="ProductsContainer">
+			Products
+		</div>
+		<div class="displayDiv" id="MakeAssignmentsContainer">
+			Make Assignments
+		</div>
+		<div class="displayDiv" id="ReviewAssignmentsContainer">
+			Review Assignments
+		</div>
+		<div class="displayDiv" id="StatusContainer">
+			Status
+		</div>
+		<div class="displayDiv" id="CommitmentsContainer">
+			Commitments
+		</div>
+	</body>
+</html>
