@@ -23,24 +23,26 @@
 		<script type="text/javascript">
 			$(function()
 			{
+				var $test = $('#test');
+				$test.tabWizard(
+					{
+						tabs:
+						[
+							{ text: 'Settings', hash: 'Settings' },
+							{ text: 'Groups', hash: 'Groups' },
+							{ text: 'Products', hash: 'Products' },
+							{ text: 'Make Assignments', hash: 'MakeAssignments' },
+							{ text: 'Review Assignments', hash: 'ReviewAssignments' },
+							{ text: 'Status', hash: 'Status' },
+							{ text: 'Commitments', hash: 'Commitments' }
+						]
+					}
+				)
 				$.history.init(function(hash)
 				{
 					if(hash == "")
 					{
-						$('#test').tabWizard(
-							{
-								tabs:
-								[
-									{ text: 'Settings', hash: 'Settings' },
-									{ text: 'Groups', hash: 'Groups' },
-									{ text: 'Products', hash: 'Products' },
-									{ text: 'Make Assignments', hash: 'MakeAssignments' },
-									{ text: 'Review Assignments', hash: 'ReviewAssignments' },
-									{ text: 'Status', hash: 'Status' },
-									{ text: 'Commitments', hash: 'Commitments' }
-								]
-							}
-						).tabWizard('setSelected', 'Settings');
+						$test.tabWizard('setSelected', 'Settings');
 						$('#SettingsContainer').slideDown();
 					}
 					else
@@ -50,6 +52,10 @@
 						{
 							$('#' + hash + 'Container').slideDown('fast');
 						});
+						if ($('.displayDiv:visible').length == 0)
+						{
+							$('#' + hash +'Container').slideDown('fast');
+						}
 					}
 				},
 				{ unescape: ",/" });
