@@ -37,25 +37,20 @@
 							{ text: 'Commitments', hash: 'Commitments' }
 						]
 					}
-				)
+				);
 				$.history.init(function(hash)
 				{
-					if(hash == "")
+					var tabName = "Settings";
+					if(hash != "")
+						tabName = hash;
+					$test.tabWizard('setSelected', tabName); 
+					$('.displayDiv:visible').slideUp('fast', function()
 					{
-						$test.tabWizard('setSelected', 'Settings');
-						$('#SettingsContainer').slideDown();
-					}
-					else
+						$('#' + tabName + 'Container').slideDown('fast');
+					});
+					if ($('.displayDiv:visible').length == 0)
 					{
-						$('#test').tabWizard('setSelected', hash); 
-						$('.displayDiv:visible').slideUp('fast', function()
-						{
-							$('#' + hash + 'Container').slideDown('fast');
-						});
-						if ($('.displayDiv:visible').length == 0)
-						{
-							$('#' + hash +'Container').slideDown('fast');
-						}
+						$('#' + tabName +'Container').slideDown('fast');
 					}
 				},
 				{ unescape: ",/" });

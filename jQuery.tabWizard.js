@@ -19,7 +19,7 @@
                 var $listItem = $('<li id="' + tab.hash + 'Tab">');
                 var $tabLink = $('<a href="#' + tab.hash + '">');
                 var $tabLeft = $('<span>&nbsp;</span>').addClass('tabDivider tabLeft');
-                var $tabMiddle = $('<span>').text(tab.text).addClass('tabMiddle');
+                var $tabMiddle = $('<span>').addClass('tabMiddle').text(tab.text);
                 var $tabRight = $('<span>&nbsp;</span>').addClass('tabDivider tabRight');
         
                 if (i == 0)
