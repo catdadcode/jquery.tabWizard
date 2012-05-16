@@ -16,7 +16,7 @@
             for (var i in settings.tabs)
             {
                 var tab = settings.tabs[i];
-                var $listItem = $('<li id="' + tab.hash + '">');
+                var $listItem = $('<li id="' + tab.hash + 'Tab">');
                 var $tabLink = $('<a href="#' + tab.hash + '">');
                 var $tabLeft = $('<span>&nbsp;</span>').addClass('tabDivider tabLeft');
                 var $tabMiddle = $('<span>').text(tab.text).addClass('tabMiddle');
@@ -40,7 +40,7 @@
         setSelected : function(hash)
         {
             $('.tabSelected').removeClass('tabSelected');
-            $('#' + hash).addClass('tabSelected');
+            $('#' + hash + 'Tab').addClass('tabSelected');
         }
     };
     $.fn.tabWizard = function(method)
